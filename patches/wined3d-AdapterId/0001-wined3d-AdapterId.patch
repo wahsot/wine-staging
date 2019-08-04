@@ -1,0 +1,22 @@
+diff -u a/dlls/wined3d/directx.c b/dlls/wined3d/directx.c
+--- a/dlls/wined3d/directx.c	2019-08-04 10:03:07.615621539 +1000
++++ b/dlls/wined3d/directx.c	2019-08-04 10:11:08.909470573 +1000
+@@ -630,8 +630,16 @@
+         }
+     }
+ 
+-    driver_info->vendor = gpu_desc->vendor;
+-    driver_info->device = gpu_desc->device;
++    if (wined3d_settings.pci_vendor_id && wined3d_settings.pci_vendor_id < 0xffff)
++        driver_info->vendor = wined3d_settings.pci_vendor_id;
++    else
++        driver_info->vendor = gpu_desc->vendor;
++
++    if (wined3d_settings.pci_device_id && wined3d_settings.pci_device_id < 0xffff)
++        driver_info->device = wined3d_settings.pci_device_id;
++    else
++        driver_info->device = gpu_desc->device;
++
+     wined3d_copy_name(driver_info->description, gpu_desc->description, ARRAY_SIZE(driver_info->description));
+     driver_info->vram_bytes = vram_bytes ? vram_bytes : (UINT64)gpu_desc->vidmem * 1024 * 1024;
+     driver = gpu_desc->driver;
