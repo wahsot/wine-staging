@@ -1,12 +1,12 @@
 diff --git a/dlls/wined3d/directx.c b/dlls/wined3d/directx.c
-index 6043cc1e6f..87c6f6b61a 100644
+index 6043cc1e6f..86da407eaf 100644
 --- a/dlls/wined3d/directx.c
 +++ b/dlls/wined3d/directx.c
 @@ -397,6 +397,8 @@ static const struct wined3d_gpu_description gpu_description_table[] =
      {HW_VENDOR_AMD,        CARD_AMD_RADEON_RX_460,         "Radeon(TM) RX 460 Graphics",       DRIVER_AMD_RX,           4096},
      {HW_VENDOR_AMD,        CARD_AMD_RADEON_RX_480,         "Radeon (TM) RX 480 Graphics",      DRIVER_AMD_RX,           4096},
      {HW_VENDOR_AMD,        CARD_AMD_RADEON_RX_VEGA,        "Radeon RX Vega",                   DRIVER_AMD_RX,           8192},
-+    {HW_VENDOR_AMD,        CARD_AMD_RADEON_RAVEN,          "Radeon Raven Ridge"                DRIVER_AMD_RX,           2048},
++    {HW_VENDOR_AMD,        CARD_AMD_RADEON_RAVEN,          "Radeon Raven Ridge",               DRIVER_AMD_RX,           2048},
 +    {HW_VENDOR_AMD,        CARD_AMD_RADEON_PICASSO,        "Radeon Picasso",                   DRIVER_AMD_RX,           2048},
  
      /* Red Hat */
