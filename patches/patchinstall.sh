@@ -327,6 +327,7 @@ patch_enable_all ()
 	enable_wined3d_DXTn="$1"
 	enable_wined3d_Dual_Source_Blending="$1"
 	enable_wined3d_Indexed_Vertex_Blending="$1"
+	enable_wined3d_RyzenAPU="$1"
 	enable_wined3d_SWVP_shaders="$1"
 	enable_wined3d_Silence_FIXMEs="$1"
 	enable_wined3d_UAV_Counters="$1"
@@ -1110,6 +1111,9 @@ patch_enable ()
 			;;
 		wined3d-Indexed_Vertex_Blending)
 			enable_wined3d_Indexed_Vertex_Blending="$2"
+			;;
+		wined3d-RyzenAPU)
+			enable_wined3d_RyzenAPU="$2"
 			;;
 		wined3d-SWVP-shaders)
 			enable_wined3d_SWVP_shaders="$2"
@@ -6764,6 +6768,18 @@ if test "$enable_wined3d_Dual_Source_Blending" -eq 1; then
 	(
 		printf '%s\n' '+    { "Michael Müller", "d3d11/tests: Add basic dual source blend test.", 1 },';
 		printf '%s\n' '+    { "Michael Müller", "wined3d: Implement dual source blending.", 1 },';
+	) >> "$patchlist"
+fi
+
+# Patchset wined3d-RyzenAPU
+# |
+# | Modified files:
+# |   *	dlls/wined3d/directx.c, dlls/wined3d/wined3d_private.h
+# |
+if test "$enable_wined3d_RyzenAPU" -eq 1; then
+	patch_apply wined3d-RyzenAPU/0001-RyzenAPU.patch
+	(
+		printf '%s\n' '+    { "Vasthu Syahbani", "wined3d: Add Ryzen APU device IDs.", 1 },';
 	) >> "$patchlist"
 fi
 
